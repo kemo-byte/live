@@ -6,6 +6,24 @@ if(!isset($_SESSION['usercode'])){
   echo "<script> window.location = 'index.php';</script>";
 //		header('location: index.php');
     exit();
+} 
+$stmt1 = $conn->prepare("SELECT code FROM codes");
+
+$stmt1->execute();
+$rows = $stmt1->fetchAll();
+
+$checkSession = 0;
+foreach ($rows as  $value) {
+  if($value['code'] == $_SESSION['usercode']){
+    
+  $checkSession ++;
+  }
+}
+
+if($checkSession === 0){
+  echo "<script> window.location = 'logout.php';</script>";
+  //		header('location: logout.php');
+      exit();
 }
 
 

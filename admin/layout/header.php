@@ -38,6 +38,7 @@ if(!isset($_SESSION['admincode'])){
 
     <link rel="stylesheet" href="../css/main.css">
 
+    <script src="../js/sweetalert2@11.js"></script>
     <script src="../js/main.js"></script>
 
 </head>

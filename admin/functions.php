@@ -1,5 +1,5 @@
 <?php
-function ifEmpty($value, $msg = "خطأ ، هذا الحقل مطلوب")
+function ifEmpty($value, $msg = "خطأ ، هذا الحقل مطلوب", $redirect="index.php")
 {
     global $formErrors;
     if (isset($value)) {
@@ -7,11 +7,10 @@ function ifEmpty($value, $msg = "خطأ ، هذا الحقل مطلوب")
         $filtered = filter_var($value, FILTER_SANITIZE_STRING);
 
         if (empty($filtered)) {
-
-
-            $formErrors[] = $msg;
+            error($msg,$redirect);
         }
     }
+    exit();
 }
 
 
@@ -30,6 +29,7 @@ function success($msg, $redirect = 'index.php')
         
     });
             </script>";
+            exit();
 }
 function error($msg, $redirect = 'index.php')
 {
@@ -46,4 +46,5 @@ function error($msg, $redirect = 'index.php')
                     
                 });
             </script>";
+            exit();
 }

@@ -3,7 +3,34 @@ $heading = "لوحة التحكم";
 require 'layout/header.php';
 
 require 'layout/nav.php'; 
-$stmt = $conn->prepare("SELECT code FROM codes");
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+if(isset($_POST['codeid'])) {
+  $codeid = $_POST['codeid'];
+ 
+  $stmt = $conn->prepare("DELETE FROM codes Where id = :zid");
+
+    $stmt->bindParam(":zid", $codeid);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount()) {
+
+        success("تم حذف رقم الإشتراك");
+        header("refresh:3; index");
+        exit();
+    } else {
+
+        error("رقم الإشتراك غير موجود");
+
+        header("refresh:3; index");
+        exit();
+    }
+}
+}
+
+$stmt = $conn->prepare("SELECT * FROM codes");
 
     $stmt->execute();
 
@@ -28,12 +55,16 @@ $stmt = $conn->prepare("SELECT code FROM codes");
               foreach($rows as $row):
               ?>
                     <tr>
+                    <form method="POST">
+
                         <td><span><?= $row['code']?></span></td>
                         <td><span>
                           <a class="btn btn-outline-info ml-2" href="">تعديل</a>
-                          <a class="btn btn-outline-danger" href="">حذف</a>
+                            <input type="hidden" name="codeid" value="<?= $row['id'] ?>" >
+                            <input type="submit" class="confirm btn btn-outline-danger" value="حذف">
                         </span></td>
-                      
+                        </form>
+
                     </tr> 
                     <?php endforeach; ?>                
             </tbody>
@@ -50,7 +81,15 @@ $stmt = $conn->prepare("SELECT code FROM codes");
 
   <?php } ?>
 
+  <script>
+    function conf(el, value) {
+        $(el).click(function() {
 
+            return confirm(value);
+        });
+    }
+    conf($('.confirm'), 'هل تريد حذف رقم الإشتراك ؟');
+</script>
   
 </body>
 </html>

@@ -1,3 +1,16 @@
+<?php
+
+require 'admin/connect.php';
+
+
+
+$stmt = $conn->prepare("SELECT link FROM links");
+
+$stmt->execute();
+
+$row = $stmt->fetch();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,7 @@
   <title>Video</title>
 </head>
 <body>
-  <h1 style="color:purple; text-align: center;">this is sheikh raslan lecture</h1>
+  <h1 style="color:purple; text-align: center;">  </h1>
 
   <div embed-responsive embed-responsive-16by9>
     <style>
@@ -28,8 +41,8 @@
     data-setup="{}"
     
   >
-    <source src="../raslan.mp4" type="video/mp4" />
-    <source src="../raslan.webm" type="video/webm" />
+    <source src="<?= isset($row['link'])?$row['link']:''?>" type="video/mp4" />
+    <source src="" type="video/webm" />
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that

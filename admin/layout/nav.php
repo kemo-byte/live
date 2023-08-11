@@ -12,6 +12,7 @@
     <form action="logout.php" method="post">
       <button class="btn btn-outline-danger mb-2 mb-lg-0">تسجيل خروج</button>
     </form>
-    <a href="add.php" class="btn btn-outline-success ml-2">إضافة رقم إشتراك</a>
+    <a href="add.php" class="btn btn-outline-success ml-2 mb-2 mb-lg-0">إضافة رقم إشتراك</a>
+    <a href="link.php" class="btn btn-outline-info ml-2  mb-2 mb-lg-0"> رابط البث</a>
 
   </div>

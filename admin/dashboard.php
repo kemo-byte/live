@@ -1,18 +1,15 @@
 <?php
-
-
-
-
-
-
 $heading = "لوحة التحكم";
-
-
-
 require 'layout/header.php';
-?>
 
-<?php require 'layout/nav.php'; ?>
+require 'layout/nav.php'; 
+$stmt = $conn->prepare("SELECT code FROM codes");
+
+    $stmt->execute();
+
+    $rows = $stmt->fetchAll();
+    if (!empty($rows)) {
+?>
 
 
 
@@ -27,62 +24,33 @@ require 'layout/header.php';
                 </tr>
             </thead>
             <tbody>
+              <?php
+              foreach($rows as $row):
+              ?>
                     <tr>
-                        <td><span>234234234</span></td>
+                        <td><span><?= $row['code']?></span></td>
                         <td><span>
                           <a class="btn btn-outline-info ml-2" href="">تعديل</a>
                           <a class="btn btn-outline-danger" href="">حذف</a>
                         </span></td>
                       
                     </tr> 
-                    
-                    <tr>
-                        <td><span>234234234</span></td>
-                        <td><span>
-                          <a class="btn btn-outline-info ml-2" href="">تعديل</a>
-                          <a class="btn btn-outline-danger" href="">حذف</a>
-                        </span></td>
-                      
-                    </tr>
-                    
-                    <tr>
-                        <td><span>234234234</span></td>
-                        <td><span>
-                          <a class="btn btn-outline-info ml-2" href="">تعديل</a>
-                          <a class="btn btn-outline-danger" href="">حذف</a>
-                        </span></td>
-                      
-                    </tr>
-
-                    <tr>
-                      <td><span>234234234</span></td>
-                      <td><span>
-                        <a class="btn btn-outline-info ml-2" href="">تعديل</a>
-                        <a class="btn btn-outline-danger" href="">حذف</a>
-                      </span></td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td><span>234234234</span></td>
-                    <td><span>
-                      <a class="btn btn-outline-info ml-2" href="">تعديل</a>
-                      <a class="btn btn-outline-danger" href="">حذف</a>
-                    </span></td>
-                  
-                </tr>
-
-                
+                    <?php endforeach; ?>                
             </tbody>
         </table>
-<div class="text-center">
-  <a href="add.php" class="text-center btn btn-success">إضافة رقم إشتراك</a>
 
-</div>
     </div>
 </div>
 
+<?php }  else { ?>
+  <div class="text-center">
+  <a href="add.php" class="text-center btn btn-success">إضافة رقم إشتراك</a>
+
+</div>
+
+  <?php } ?>
 
 
+  
 </body>
 </html>

@@ -3,11 +3,23 @@ $heading = 'إضافة رقم إشتراك';
 require 'layout/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ 
+  $stmt = $conn->prepare("SELECT code FROM codes");
+
+    $stmt->execute();
+
+    $rows = $stmt->fetchAll();
 
 
 $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_NUMBER_INT);
-
+// check before insert to database
   ifEmpty($number,'ادخل رقم الإشتراك','add.php');
+
+  foreach ($rows as $row) {
+    if($row['code'] === $number) {
+      error('هذا الرقم مسجل', 'add.php');
+    }
+  }
 
 try {
   $stmt = $conn->prepare("insert into codes(`code`) values (?);");

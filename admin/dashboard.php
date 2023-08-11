@@ -59,7 +59,7 @@ $stmt = $conn->prepare("SELECT * FROM codes");
 
                         <td><span><?= $row['code']?></span></td>
                         <td><span>
-                          <a class="btn btn-outline-info ml-2" href="">تعديل</a>
+                          <a class="btn btn-outline-info ml-2" href="editcode.php?codeid=<?=  $row['id']?>">تعديل</a>
                             <input type="hidden" name="codeid" value="<?= $row['id'] ?>" >
                             <input type="submit" class="confirm btn btn-outline-danger" value="حذف">
                         </span></td>

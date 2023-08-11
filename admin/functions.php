@@ -1,0 +1,49 @@
+<?php
+function ifEmpty($value, $msg = "خطأ ، هذا الحقل مطلوب")
+{
+    global $formErrors;
+    if (isset($value)) {
+
+        $filtered = filter_var($value, FILTER_SANITIZE_STRING);
+
+        if (empty($filtered)) {
+
+
+            $formErrors[] = $msg;
+        }
+    }
+}
+
+
+function success($msg, $redirect = 'index.php')
+{
+    echo "<script>
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '$msg',
+        showConfirmButton: false,
+        timer: 3000
+    }).then((result) => {
+        
+            window.location = '" . $redirect . "';
+        
+    });
+            </script>";
+}
+function error($msg, $redirect = 'index.php')
+{
+    echo "<script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title:' $msg',
+                    showConfirmButton: false,
+                    timer: 3000
+                }).then((result) => {
+                    
+                    window.location = '" . $redirect . "';
+                    
+                });
+            </script>";
+}

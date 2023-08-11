@@ -1,12 +1,29 @@
 <?php
 	session_start();
   require 'connect.php';  
+  require 'functions.php'; 
+
   if(isset($_SESSION['admincode'])){
     echo "<script> window.location = 'dashboard.php';</script>";
 //		header('location: dashboard.php');
       exit();
 }
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in </title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/sweetalert2@11.js"></script>
+</head>
+<body style="background:navy">
+
+
+<?php
 
 
 // check if the user comming from Http Request
@@ -28,29 +45,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(password_verify($password,$row['password'])){
     $_SESSION['admincode'] = $row['name'];
-			header('location:dashboard.php');
+			// header('location:dashboard.php');
     // echo "<script> window.location = 'dashboard';</script>";
+    success('تم تسجيل الدخول بنجاح !','dashboard.php');
     exit();
   }
 }
   else{
-    echo "<div class='container text-center' style='position: relative;'>
-    <div style='display:inline-block;' class='alert alert-danger'>البريد الإلكتروني أو كلمة المرور غير صحيحة</div></div>";
+    // echo "<div class='container text-center' style='position: relative;'><div style='display:inline-block;' class='alert alert-danger'>البريد الإلكتروني أو كلمة المرور غير صحيحة</div></div>";
+    error('حدث خطأ ! حاول مرة أخرى');
   }
 }
 
 	?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign in </title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-</head>
-<body style="background:navy">
+
 <div class="container">
 
 <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">

@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $_SESSION['admincode'] = $row['name'];
 			// header('location:dashboard.php');
     // echo "<script> window.location = 'dashboard';</script>";
-    success('تم تسجيل الدخول بنجاح !','dashboard.php');
+    success('تم تسجيل الدخول بنجاح ','dashboard.php');
     exit();
   }
 }

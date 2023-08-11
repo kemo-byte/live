@@ -1,51 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashbaord</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery-3.2.1.min.js"></script>
+<?php
+$heading = 'إضافة رقم إشتراك';
+require 'layout/header.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="css/responsive.bootstrap4.min.css">
-
-    <script src="js/jquery.dataTables.min.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
-    <script src="js/dataTables.responsive.min.js"></script>
+  
+}
 
 
-
-
-
-    <link rel="stylesheet" href="css/main.css">
-
-    <script src="js/main.js"></script>
-
-</head>
+?>
 <body>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">
-      <img src="imgs/logo.png" alt="logo" class="img-responsive rounded w-100">
-    </h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <!-- <a class="p-2 text-dark" href="pricing.htm#">Features</a>
-      <a class="p-2 text-dark" href="pricing.htm#">Enterprise</a>
-      <a class="p-2 text-dark" href="pricing.htm#">Support</a>
-      <a class="p-2 text-dark" href="pricing.htm#">Pricing</a> -->
-    </nav>
-    <form action="" method="post">
-      <button class="btn btn-outline-danger" href="">تسجيل خروج</button>
-    </form>
-  </div>
+<?php require 'layout/nav.php'; ?>
+
 
 
 

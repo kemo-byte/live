@@ -1,0 +1,3 @@
+$(function () {
+  $("#links").DataTable();
+});

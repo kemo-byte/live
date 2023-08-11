@@ -1,0 +1,47 @@
+
+.all-links,
+.all-users {
+	direction: rtl;
+	text-align: right;
+	margin: 50px auto;
+}
+
+
+.all-links input[type=search],
+.all-users input[type=search] {
+	margin-right: 10px;
+}
+
+.all-links th,
+.all-users th {
+	background: #03a9f4;
+	border: none;
+	color: #fff;
+}
+
+.all-links td,
+.all-users td {
+	white-space: break-spaces !important;
+}
+
+.all-links td span,
+.all-users td span {
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	max-width: 250px;
+	height: 30px;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.all-links .dataTables_length,
+.all-users .dataTables_length {
+	display: none;
+}
+
+.all-links h4,
+.all-users h4 {
+	text-align: center;
+}

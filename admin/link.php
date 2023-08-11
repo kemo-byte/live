@@ -5,7 +5,6 @@ require 'layout/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-
 $link = filter_var(trim($_POST['link']), FILTER_SANITIZE_URL);
 
   ifEmpty($link,'ادخل رابط البث','link.php');

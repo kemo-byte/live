@@ -1,7 +1,12 @@
 <?php
+$heading = 'صفحة البث';
+require 'layout/header.php';
 
-require 'admin/connect.php';
-
+if(!isset($_SESSION['usercode'])){
+  echo "<script> window.location = 'index.php';</script>";
+//		header('location: index.php');
+    exit();
+}
 
 
 $stmt = $conn->prepare("SELECT link FROM links");
@@ -11,15 +16,7 @@ $stmt->execute();
 $row = $stmt->fetch();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video</title>
-</head>
-<body>
+<?php require 'layout/nav.php'; ?>
   <h1 style="color:purple; text-align: center;">  </h1>
 
   <div embed-responsive embed-responsive-16by9>

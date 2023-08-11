@@ -1,3 +1,3 @@
 $(function () {
-  $("#links").DataTable();
+  $("#links").DataTable({paging:5});
 });

@@ -20,7 +20,7 @@ try {
   }
 } catch (\Exception $th) {
   //throw $th;
-  echo $th->getMessage();
+  // echo $th->getMessage();
 }
 
 }

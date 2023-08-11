@@ -30,7 +30,7 @@ if(isset($_POST['codeid'])) {
 }
 }
 
-$stmt = $conn->prepare("SELECT * FROM codes");
+$stmt = $conn->prepare("SELECT * FROM codes order by id desc");
 
     $stmt->execute();
 
@@ -46,17 +46,19 @@ $stmt = $conn->prepare("SELECT * FROM codes");
         <table id="links" class="mx-auto table table-striped table-bordered dt-responsive nowrap w-50" >
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>رقم الإشتراك</th>
                     <th>-</th>
                 </tr>
             </thead>
             <tbody>
               <?php
-              foreach($rows as $row):
+              foreach($rows as $key =>$row):
               ?>
                     <tr>
                     <form method="POST">
 
+                        <td><span><?= $key+1?></span></td>
                         <td><span><?= $row['code']?></span></td>
                         <td><span>
                           <a class="btn btn-outline-info ml-2" href="editcode.php?codeid=<?=  $row['id']?>">تعديل</a>

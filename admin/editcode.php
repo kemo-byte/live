@@ -56,7 +56,7 @@ $stmt = $conn->prepare("SELECT code FROM codes where id =?");
   <div class="container mt-5" style="margin-bottom:190px" dir="rtl">
       <div id="m"></div>
       <h1 class="text-center">
-          رابط البث
+          تعديل رقم إشتراك
       </h1>
 
 

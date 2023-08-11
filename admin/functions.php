@@ -10,7 +10,6 @@ function ifEmpty($value, $msg = "خطأ ، هذا الحقل مطلوب", $redir
             error($msg,$redirect);
         }
     }
-    exit();
 }
 
 

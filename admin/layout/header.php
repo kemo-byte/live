@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'connect.php';
 require 'functions.php';
 
 if(!isset($_SESSION['admincode'])){

@@ -40,7 +40,7 @@ $stmt = $conn->prepare("SELECT * FROM codes order by id desc");
 
 
 
-  <div class="all-links container-fluid">
+  <div class="all-links container-fluid" >
     <div class="col-12 all-links">
         <h1 class="card-title text-center" style="color:navy">لوحة التحكم</h1>
         <table id="links" class="mx-auto table table-striped table-bordered dt-responsive nowrap w-50" >

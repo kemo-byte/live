@@ -2,16 +2,38 @@
 $heading = 'رابط البث';
 require 'layout/header.php';
 
+try {
+  $stmt = $conn->prepare("SELECT link FROM links");
+
+    $stmt->execute();
+
+    $row = $stmt->fetch();
+
+} catch (\Throwable $th) {
+  //throw $th;
+  echo $th->getMessage();
+exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 $link = filter_var(trim($_POST['link']), FILTER_SANITIZE_URL);
 
   ifEmpty($link,'ادخل رابط البث','link.php');
-
+  
 try {
-  $stmt = $conn->prepare("update links set link = ? where id = 1");
-  $stmt->execute([$link]);
+
+  if($stmt->rowCount() > 0){
+    $stmt = $conn->prepare("update links set link = ? where id = 1");
+    $stmt->execute([$link]);
+
+} else {
+
+    $stmt = $conn->prepare("insert into links values (1,?)");
+    $stmt->execute([$link]);
+
+}
 
   if ($stmt->rowCount() > 0) {
       success('تم تسجيل رابط البث بنجاح' ,'link.php');
@@ -20,20 +42,17 @@ try {
   }
 } catch (\Exception $th) {
   //throw $th;
-  // echo $th->getMessage();
+  echo $th->getMessage();
+  exit();
 }
 
 }
 
-$stmt = $conn->prepare("SELECT link FROM links");
 
-    $stmt->execute();
-
-    $row = $stmt->fetch();
 
 ?>
 <body>
-<?php require 'layout/nav.php'; ?>
+<?php require 'layout/nav.php';  ?>
 
 
 <style>

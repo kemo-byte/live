@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2023 at 04:55 PM
+-- Generation Time: Aug 12, 2023 at 12:10 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -57,9 +57,19 @@ CREATE TABLE `codes` (
 --
 
 INSERT INTO `codes` (`id`, `code`) VALUES
-(1, '12341234'),
-(2, '324234234'),
-(3, '34534543');
+(4, '234234234'),
+(12, '345345'),
+(9, '34534534'),
+(8, '345345345'),
+(5, '34534535'),
+(6, '345345435'),
+(13, '3454'),
+(7, '435345'),
+(17, '44466663'),
+(3, '45434543'),
+(16, '45446754'),
+(15, '4564434'),
+(14, '567867');
 
 -- --------------------------------------------------------
 
@@ -71,13 +81,6 @@ CREATE TABLE `links` (
   `id` int(11) NOT NULL,
   `link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `links`
---
-
-INSERT INTO `links` (`id`, `link`) VALUES
-(1, 'http://localhost:8000/raslan.mp4');
 
 --
 -- Indexes for dumped tables
@@ -118,13 +121,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `codes`
 --
 ALTER TABLE `codes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `links`
---
-ALTER TABLE `links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,7 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 if(isset($_POST['codeid'])) {
   $codeid = $_POST['codeid'];
  
-  $stmt = $conn->prepare("DELETE FROM codes Where id = :zid");
+  try {
+    $stmt = $conn->prepare("DELETE FROM codes Where id = :zid");
 
     $stmt->bindParam(":zid", $codeid);
 
@@ -27,14 +28,23 @@ if(isset($_POST['codeid'])) {
         header("refresh:3; index");
         exit();
     }
-}
-}
+  } catch (\Throwable $th) {
+    //throw $th;
+  }
 
-$stmt = $conn->prepare("SELECT * FROM codes order by id desc");
+  
+}
+}
+try {
+    $stmt = $conn->prepare("SELECT * FROM codes order by id desc");
 
     $stmt->execute();
 
     $rows = $stmt->fetchAll();
+} catch (\Throwable $th) {
+    //throw $th;
+}
+
     if (!empty($rows)) {
 ?>
 

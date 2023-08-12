@@ -3,12 +3,16 @@ $heading = 'إضافة رقم إشتراك';
 require 'layout/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
- 
+ try {
   $stmt = $conn->prepare("SELECT code FROM codes");
 
     $stmt->execute();
 
     $rows = $stmt->fetchAll();
+ } catch (\Throwable $th) {
+  //throw $th;
+ }
+  
 
 
 $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_NUMBER_INT);

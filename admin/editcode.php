@@ -27,12 +27,16 @@ try {
 }
 
 
-
-$stmt = $conn->prepare("SELECT code FROM codes where id =?");
+try {
+  $stmt = $conn->prepare("SELECT code FROM codes where id =?");
 
     $stmt->execute([$_GET['codeid']]);
 
     $row = $stmt->fetch();
+} catch (\Throwable $th) {
+  //throw $th;
+}
+
 
 ?>
 <body>

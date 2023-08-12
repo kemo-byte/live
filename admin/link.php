@@ -11,7 +11,7 @@ try {
 
 } catch (\Throwable $th) {
   //throw $th;
-  echo $th->getMessage();
+  // echo $th->getMessage();
 exit();
 }
 
@@ -42,8 +42,8 @@ try {
   }
 } catch (\Exception $th) {
   //throw $th;
-  echo $th->getMessage();
-  exit();
+  // echo $th->getMessage();
+  // exit();
 }
 
 }

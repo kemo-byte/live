@@ -35,12 +35,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $password = $_POST['pass'];
 
   // check if the user exists in the database
-
+try {
   $stmt = $conn ->prepare("SELECT name,email,password from admins where email=?");
   $stmt->execute([$username]);
   $row = 	$stmt ->fetch();
   $count = $stmt ->rowCount();
 
+} catch (\Throwable $th) {
+  //throw $th;
+}
+  
   // if count > 0    username found
   if($count > 0){
 

@@ -7,10 +7,16 @@ if(!isset($_SESSION['usercode'])){
 //		header('location: index.php');
     exit();
 } 
-$stmt1 = $conn->prepare("SELECT code FROM codes");
+
+try {
+  $stmt1 = $conn->prepare("SELECT code FROM codes");
 
 $stmt1->execute();
 $rows = $stmt1->fetchAll();
+} catch (\Throwable $th) {
+  //throw $th;
+}
+
 
 $checkSession = 0;
 foreach ($rows as  $value) {
@@ -26,12 +32,16 @@ if($checkSession === 0){
       exit();
 }
 
-
-$stmt = $conn->prepare("SELECT link FROM links");
+try {
+  $stmt = $conn->prepare("SELECT link FROM links");
 
 $stmt->execute();
 
 $row = $stmt->fetch();
+} catch (\Throwable $th) {
+  //throw $th;
+}
+
 
 ?>
 <?php require 'layout/nav.php'; ?>

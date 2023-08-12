@@ -11,11 +11,16 @@ if(isset($_SESSION['usercode'])){
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'):
-  $stmt = $conn->prepare("SELECT code FROM codes");
+  try {
+    $stmt = $conn->prepare("SELECT code FROM codes");
 
   $stmt->execute();
 
   $rows = $stmt->fetchAll();
+  } catch (\Throwable $th) {
+    //throw $th;
+  }
+  
 
   $code = filter_var(trim($_POST['code']), FILTER_SANITIZE_NUMBER_INT);
   
